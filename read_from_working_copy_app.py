@@ -23,10 +23,13 @@ def main():
         if '/tmp/' in srce_path:
             pathSplitter = '/tmp/'
         else:
-            if '/File Provider Storage/' in srce_path:
-                pathSplitter = '/File Provider Storage/'
+            if '/File Provider Storage/Repositories/' in srce_path:
+                pathSplitter = '/File Provider Storage/Repositories/'
             else:
-                pathSplitter = '/Repositories/'
+                if '/File Provider Storage/' in srce_path:
+                    pathSplitter = '/File Provider Storage/'
+                else:
+                    pathSplitter = '/Repositories/'
         dest_path = srce_path.split(pathSplitter)[-1]
         if srce_path.endswith('.zip'):
             foldername = srce_path.split('/')[-1].replace('.zip', '')
