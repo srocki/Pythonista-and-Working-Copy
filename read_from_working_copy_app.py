@@ -36,13 +36,12 @@ def main():
             print('Got me a zip file')
             zf = zipfile.ZipFile(srce_path)
             for info in zf.infolist():
-                # print (info.filename)
+                print ('Source filename in zip: ' + info.filename)
                 newfile = zf.extract(info)
-                newfilename = newfile.split('/')[-1]
-                file_path = from_wc + '/' + foldername
+                dest_path = from_wc + '/' + foldername + '/' + info.filename
+                file_path, file_name = os.path.split(dest_path)
                 if not os.path.exists(file_path):
                     os.makedirs(file_path)
-                dest_path = file_path + '/' + newfilename
                 # print('Copy [' + newfile + '] to [' + dest_path + ']')
                 print(shutil.move(newfile, dest_path))
                 shutil
