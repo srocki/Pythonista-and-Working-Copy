@@ -18,7 +18,7 @@ def main():
         file_paths = appex.get_file_paths()
         assert len(file_paths) == 1, 'Invalid file paths: {}'.format(file_paths)
         srce_path = file_paths[0]
-        print(file_paths)
+        # print(file_paths)
         pathSplitter = ''
         if '/tmp/' in srce_path:
             pathSplitter = '/tmp/'
@@ -36,7 +36,7 @@ def main():
             print('Got me a zip file')
             zf = zipfile.ZipFile(srce_path)
             for info in zf.infolist():
-                print ('Source filename in zip: ' + info.filename)
+                # print ('Source filename in zip: ' + info.filename)
                 newfile = zf.extract(info)
                 dest_path = from_wc + '/' + foldername + '/' + info.filename
                 file_path, file_name = os.path.split(dest_path)
